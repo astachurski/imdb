@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.NonUniqueResultException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,17 @@ public class ActorService {
     }
 
     public Actor getActorByName(String name){
-       return actorRepository.findActorByFirstname(name);
+        Actor result = null;
+        try {
+            result = actorRepository.findActorByFirstname(name);
+        } catch (Exception e){
+
+            System.out.printf("error !");
+        }
+        return result;
+    }
+
+    public List<Actor> getActorsByName(String name){
+        return actorRepository.findAllByFirstname(name);
     }
 }

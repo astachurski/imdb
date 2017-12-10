@@ -7,6 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.List;
+
 @SpringBootApplication
 public class ImdbApplication implements CommandLineRunner {
 
@@ -21,10 +23,19 @@ public class ImdbApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 	    actorService.addActor(new Actor("Arnold", "Kowalski"));
+		actorService.addActor(new Actor("Sylverster", "Stallone"));
+		actorService.addActor(new Actor("Olaf", "Lubaszenko"));
+        actorService.addActor(new Actor("Olaf", "Pompka"));
+        actorService.addActor(new Actor("Tom", "Hanks"));
+        actorService.addActor(new Actor("Michael", "Jackson"));
 
-	    Actor actorFound = actorService.getActorByName("Arnold");
+		Actor actorFound = actorService.getActorByName("Olaf");
 
-        System.out.printf(actorFound.toString());
+        if (actorFound != null)
+            System.out.printf(actorFound.toString());
+
+        List<Actor> actorList = actorService.getActorsByName("Olaf");
+        actorList.forEach(e -> System.out.printf(e.toString()));
 
 
 	     //List<Actor> actors = actorService.getAllActors();
