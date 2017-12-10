@@ -35,7 +35,7 @@ public class ImdbApplication implements CommandLineRunner {
         Actor actor1 = new Actor("Arnold", "Kowalski");
         actorService.addActor(actor1);
 
-        Actor actor2 = new Actor("Sylverster", "Stallone");
+        Actor actor2 = new Actor("Sylvester", "Stallone");
         actorService.addActor(actor2);
         Actor actor3 = new Actor("Olaf", "Lubaszenko");
         actorService.addActor(actor3);
@@ -83,6 +83,10 @@ public class ImdbApplication implements CommandLineRunner {
         movieCastService.addCast(movieCast5);
         movieCastService.addCast(movieCast6);
         movieCastService.addCast(movieCast7);
+
+        List<Movie> pompkaMovies = movieCastService.getMoviesByActorLastName("Pompka");
+
+        pompkaMovies.forEach(e -> System.out.println(e.toString()));
 
         //List<Actor> actors = actorService.getAllActors();
 	     //actors.forEach(actor -> System.out.printf(""));

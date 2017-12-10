@@ -16,10 +16,6 @@ public class MovieCastService {
     @Autowired
     private MovieCastRepository movieCastRepository;
 
-    public void addMovieCast(MovieCast movieCast){
-        movieCastRepository.save(movieCast);
-    }
-
     public List<MovieCast> getCasts(){
         List<MovieCast> movieCasts = new ArrayList<>();
         movieCastRepository.findAll().forEach(e -> movieCasts.add(e));
@@ -29,4 +25,15 @@ public class MovieCastService {
     public void addCast(MovieCast movieCast){
         movieCastRepository.save(movieCast);
     }
+
+    public List<Movie> getMoviesByActorLastName(String lastname){
+         List<Movie> results = new ArrayList<>();
+         movieCastRepository.findMovieCastsByActor_Lastname(lastname)
+                 .forEach(cast -> results.add(cast.getMovie()));
+         return results;
+    }
+
+
+
+
 }

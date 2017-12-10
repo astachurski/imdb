@@ -12,6 +12,15 @@ public class MovieCast {
 
     @ManyToOne
     private Movie movie;
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public Actor getActor() {
+        return actor;
+    }
+
     @ManyToOne
     private Actor actor;
 

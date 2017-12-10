@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface MovieCastRepository extends CrudRepository<MovieCast, Integer>{
     List<MovieCast> findMovieCastsByActor_Lastname(String lname);
+
+
 }
 
