@@ -32,4 +32,5 @@ public class MovieService {
     public void addMovies(List<Movie> movies){
         movieRepository.saveAll(movies);
     }
+
 }

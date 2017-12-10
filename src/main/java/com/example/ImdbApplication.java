@@ -84,9 +84,27 @@ public class ImdbApplication implements CommandLineRunner {
         movieCastService.addCast(movieCast6);
         movieCastService.addCast(movieCast7);
 
+        System.out.println(" -- movies by actor --");
+
         List<Movie> pompkaMovies = movieCastService.getMoviesByActorLastName("Pompka");
 
         pompkaMovies.forEach(e -> System.out.println(e.toString()));
+
+        System.out.println(" -- actors by movie title --");
+
+        List<Actor> springiemMieczemActors =
+                movieCastService.getActorsByMovieTitle("Springiem i Mieczem");
+
+        springiemMieczemActors.forEach(e -> System.out.println(e.toString()));
+
+        Integer th = 3;
+        System.out.println(" -- movies with cast less than: " + th);
+
+        List<Movie> moviesWithCastLessThan =
+                movieCastService.getMoviesWithCastLessThan(th);
+
+        moviesWithCastLessThan.forEach(e -> System.out.println(e.toString()));
+
 
         //List<Actor> actors = actorService.getAllActors();
 	     //actors.forEach(actor -> System.out.printf(""));
