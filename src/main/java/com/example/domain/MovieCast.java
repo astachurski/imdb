@@ -1,6 +1,11 @@
 package com.example.domain;
 
+
+
 import org.springframework.beans.factory.annotation.Required;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 
 import javax.persistence.*;
 
@@ -11,6 +16,7 @@ public class MovieCast {
     private Integer id;
 
     @ManyToOne
+    //@Cascade(CascadeType.DELETE)
     private Movie movie;
 
     public Movie getMovie() {
@@ -22,6 +28,7 @@ public class MovieCast {
     }
 
     @ManyToOne
+    //@Cascade(CascadeType.DELETE)
     private Actor actor;
 
     public MovieCast(Movie movie, Actor actor) {

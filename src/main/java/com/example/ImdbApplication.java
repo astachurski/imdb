@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
@@ -29,6 +31,7 @@ public class ImdbApplication implements CommandLineRunner {
 	public static void main(String[] args) {
 		SpringApplication.run(ImdbApplication.class, args);
 	}
+
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -111,10 +114,9 @@ public class ImdbApplication implements CommandLineRunner {
 
         moviesWithCastLessThan.forEach(e -> System.out.println(e.toString()));
 
+        System.out.println(" ----- trying to get movies via JDBC ------");
 
-        //List<Actor> actors = actorService.getAllActors();
-	     //actors.forEach(actor -> System.out.printf(""));
-
+        movieService.getMoviesViaJdbc().forEach(movie -> System.out.println(movie.getTitle()));
 
 	}
 }
