@@ -3,6 +3,7 @@ package com.example.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Movie {
@@ -11,6 +12,17 @@ public class Movie {
     @Id
     @GeneratedValue
     private Integer id;
+
+    @OneToOne
+    private MovieDetail movieDetail;
+
+    public void setMovieDetail(MovieDetail movieDetail) {
+        this.movieDetail = movieDetail;
+    }
+
+    public MovieDetail getMovieDetail() {
+        return movieDetail;
+    }
 
     public Movie(String title){
         this.title = title;

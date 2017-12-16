@@ -3,6 +3,7 @@ package com.example;
 import com.example.domain.Actor;
 import com.example.domain.Movie;
 import com.example.domain.MovieCast;
+import com.example.domain.MovieDetail;
 import com.example.service.ActorService;
 import com.example.service.MovieCastService;
 import com.example.service.MovieService;
@@ -57,12 +58,17 @@ public class ImdbApplication implements CommandLineRunner {
 
         List<Movie> movieList = new ArrayList<>();
         Movie terminator = new Movie("Terminator");
+        terminator.setMovieDetail(new MovieDetail("action movie full of blood"));
         movieList.add(terminator);
 
         Movie mrocznyBean = new Movie("Mroczny Bean 2");
+        mrocznyBean.setMovieDetail(new MovieDetail("Bardzo straszny film"));
         movieList.add(mrocznyBean);
+
         Movie springiem_i_mieczem = new Movie("Springiem i Mieczem");
+        springiem_i_mieczem.setMovieDetail(new MovieDetail("Trup sciele sie gesto"));
         movieList.add(springiem_i_mieczem);
+
         Movie pan_bean = new Movie("Pan Bean");
         movieList.add(pan_bean);
 
